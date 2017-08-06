@@ -6,7 +6,13 @@ jdk:
 branches:
   only:
   - develop
-  - master
+
+env:
+  global:
+    - GIT_NAME: Travis CI
+    - GIT_EMAIL: builds@travis-ci.org
+    - TRAVIS_REPO_SLUG: jbharter/Syndicate
+    - GIT_BRANCH: develop
 
 deploy:
   provider: releases
@@ -15,5 +21,7 @@ deploy:
   file: "target/*.jar"
   skip_cleanup: true
   on:
+    repo: jbharter/Syndicate
     tags: true
+    branch: develop
 

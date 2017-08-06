@@ -1,7 +1,12 @@
 language: java
 
-after_success:
-  - .travis/push.sh
+jdk:
+  - openjdk8
+
+branches:
+  only:
+  - develop
+  - master
 
 deploy:
   provider: releases

@@ -3,17 +3,6 @@ language: java
 jdk:
   - openjdk8
 
-branches:
-  only:
-  - develop
-
-env:
-  global:
-    - GIT_NAME: Travis CI
-    - GIT_EMAIL: builds@travis-ci.org
-    - TRAVIS_REPO_SLUG: jbharter/Syndicate
-    - GIT_BRANCH: develop
-
 deploy:
   provider: releases
   api_key:
@@ -23,5 +12,4 @@ deploy:
   on:
     repo: jbharter/Syndicate
     tags: true
-    branch: develop
 

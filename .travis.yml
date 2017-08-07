@@ -5,7 +5,8 @@ deploy:
   provider: releases
   api_key:
     secure: "lIXmwLgx4OIH9lSkCbPojs+3cW4un/ODhNHqNWtwlkyBJ3lQk1udWZE3Rp7WtxYWCvR8LUO1NvS0h9E8krkRbufKc3mb6DN1a0J40bH0BrZrwArqXT3RQFNpJKhh+OBT9Zncrq5VEprDwUeP0TnBI4iLdeagCAW4np2lH8jNlEULiRF+4kJu/YtndCZj+kubJC7laCbjExDRwWaXIqRJOUHuep6PkGGwBvI2GY12LrIEWorFbOa2bcxJ8zHM4I7Gl/S2jaKqyUCqTVS5ZkGpQ/qroYH9A9q3oknrz8ByFMt3dvZR37q0vwaDc7CPn6CTIgqb+YkH73o1IvJULNBN6JKPuy1pUqfyycL2ZT3wOSAmhPnxX22v/dfxqfkJ80lDOh93PTul5OAs7tUZL93p8ktXmpBvasbAT+1rZuqWm0qtpeiuNNric6DP1BnYGcGEeYjHCWqEE6yWjHnYl7umEb2daglOQORVjJ7NCF0HRkhRrBBbj5+q80YLodTINdWsDmjPl19xRAKFjftrfWZ60hQJ+Yt/OhVyXR9sg3Xgt9lcgLTP+8Ui6KqnSlzHAXhmLU3avWwOxmtqBTsXKsapBLE7gAfY7F2sJoAOgcahiftOuF/4EOlyio/9QWmdMufGj2I0uAHQJtLMu+1J/vQ0qBRupkD7wn2G8eU4IgRdZho="
-  file: target/*.jar
+  file_glob: true
+  file: "target/syndicate*.jar"
   skip_cleanup: true
   on:
     repo: jbharter/Syndicate

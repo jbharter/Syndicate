@@ -53,12 +53,39 @@ public class DriveService {
         return null;
     }
 
+    public List<File> getListOfFiles(String fields) {
+
+        try {
+            List<File> result = new ArrayList<File>();
+            getListOfFiles().forEach(file -> {
+                try {
+                    Drive.Files.Get request = driveService.files().get(file.getId()).setFields(fields);
+                    File filer = request.execute();
+                    result.add(filer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public List<File> getListOfFilesWhere(String key, String value) {
         List<File> results = new ArrayList<>();
 
         this.getListOfFiles().forEach(file -> {
             if (file.get(key).equals(value)) results.add(file);
         });
+        return results;
+    }
+
+    public List<File> getListOfFilesWithFields(Collection<String> fields) {
+        List<File> results = new ArrayList<>();
+
+        this.getListOfFiles(fields.stream().collect(Collectors.joining(","))).forEach(results::add);
         return results;
     }
 
@@ -73,6 +100,16 @@ public class DriveService {
 
     public List<String> getPropertyFromFiles(String property) {
         return getListOfFiles().stream().map(eachFile -> {
+            if (eachFile.get(property) != null) {
+                return eachFile.get(property).toString();
+            } else {
+                return null;
+            }
+        }).filter(Objects::nonNull).collect(Collectors.toList());
+    }
+
+    public List<String> getPropertyFromFiles(String property, String fields) {
+        return getListOfFiles(fields).stream().map(eachFile -> {
             if (eachFile.get(property) != null) {
                 return eachFile.get(property).toString();
             } else {

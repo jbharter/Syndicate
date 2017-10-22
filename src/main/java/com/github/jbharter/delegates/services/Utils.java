@@ -1,8 +1,8 @@
-package com.github.jbharter.GoogleServices;
+package com.github.jbharter.delegates.services;
 
+import com.github.jbharter.delegates.services.GoogleDriveService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -36,7 +36,7 @@ class Utils {
 
     static GoogleCredential getCredential() throws IOException {
 
-        return GoogleCredential.fromStream(DriveService.class.getClassLoader().getResourceAsStream(loc)).createScoped(SCOPES);
+        return GoogleCredential.fromStream(GoogleDriveService.class.getClassLoader().getResourceAsStream(loc)).createScoped(SCOPES);
     }
 
     static HttpRequestInitializer setHttpTimeout(final HttpRequestInitializer requestInitializer, int timeoutMinutes) {

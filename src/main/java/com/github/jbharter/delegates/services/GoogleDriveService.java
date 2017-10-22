@@ -1,4 +1,4 @@
-package com.github.jbharter.GoogleServices;
+package com.github.jbharter.delegates.services;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.drive.Drive;
@@ -11,13 +11,13 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class DriveService {
+public class GoogleDriveService extends BaseService {
 
     private static Drive driveService;
 
-    private static final Logger log = LoggerFactory.getLogger(DriveService.class);
+    private static final Logger log = LoggerFactory.getLogger(GoogleDriveService.class);
 
-    public DriveService() {
+    public GoogleDriveService() {
         try {
             getGoogleDriveService();
         } catch (Exception e) {

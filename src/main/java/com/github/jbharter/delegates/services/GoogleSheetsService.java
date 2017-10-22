@@ -1,4 +1,4 @@
-package com.github.jbharter.GoogleServices;
+package com.github.jbharter.delegates.services;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.services.sheets.v4.Sheets;
@@ -10,13 +10,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SheetsService {
+public class GoogleSheetsService extends BaseService {
 
     private static Sheets sheetsService;
 
-    private static final Logger log = LoggerFactory.getLogger(SheetsService.class);
+    private static final Logger log = LoggerFactory.getLogger(GoogleSheetsService.class);
 
-    public SheetsService() {
+    public GoogleSheetsService() {
         try {
             getGoogleSheetsService();
         } catch (Exception e) {
